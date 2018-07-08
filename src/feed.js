@@ -363,8 +363,18 @@ class Feed {
         })
       }
 
-      if(entry.image) {
-        item.push({ enclosure: [{ _attr: { url: entry.image } }] });
+      if (entry.image) {
+        item.push({
+          enclosure: [
+            {
+              _attr: {
+                url: entry.image.url,
+                type: entry.image.type,
+                length: entry.image.length,
+              },
+            },
+          ],
+        })
       }
 
       channel.push({ item });
